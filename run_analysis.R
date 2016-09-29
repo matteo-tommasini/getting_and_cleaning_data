@@ -1,3 +1,7 @@
+# Open this file in R, and run it as a script (at best, in a working folder containing already 
+# the downloaded and unzipped folder "FUCI HAR Dataset"). If not, the script will firstly try
+# to download and unzip such data.
+
 # For this script we will need the packages data.table, tidyr and plyr
 # We install (and load them) if they are not installed yet
 if(!"data.table" %in% rownames(installed.packages())) install.packages(data.table)
@@ -248,7 +252,7 @@ u <- melt (t, id.vars = "feature", variable.name = "subject.activity", value.nam
 # of columns containing respectively "subject" and "activity"
 step5 <- separate(data = u, col = subject.activity, into = c("subject","activity"))
 
-# STEP 5G)
+# STEP 6)
 # We save the data of step5 into a txt file
 write.table(step5, file = "step5.txt", row.name=FALSE)
 
@@ -258,3 +262,7 @@ setwd(oldDir)
 detach("package:data.table")
 detach("package:tidyr")
 detach("package:plyr")
+
+# When the script ends, all the working data are not canceled on purpose, in order to allow further analysis. If you want to remove them all, use the command:
+
+# rm("X_train","X_test","bind_of_data","features","subject_train","subject_test","subject","activity_train","activity_test","activity","logical_mean","logical_std","activity_labels","dictionary","list_mean","list_std","s","t","u","step1","step2","step3","step4","step5")

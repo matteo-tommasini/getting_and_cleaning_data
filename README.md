@@ -80,6 +80,6 @@ The resulting tidy data frame (called step5) is saved to the file "step5.txt" an
 When the script ends, all the working data are not canceled on purpose, in order to allow further analysis. If you want to remove them all, use the command
 
 ```sh
-$ rm("X_train","X_test","bind_of_data","features","subject_train","subject_test","subject","activity_train","activity_test","activity","logical_mean","logical_std","activity_labels","dictionary","list_mean","list_std","s","t","u","step1","step2","step3","step4","step5")
+rm("X_train","X_test","bind_of_data","features","subject_train","subject_test","subject","activity_train","activity_test","activity","logical_mean","logical_std","activity_labels","dictionary","list_mean","list_std","s","t","u","step1","step2","step3","step4","step5")
 ```
 

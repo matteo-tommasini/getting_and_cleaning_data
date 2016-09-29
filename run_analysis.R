@@ -243,6 +243,7 @@ t <- cbind(feature = row.names(t), t)
 # We want to have a data.frame with
 # - the same first column
 # - a second column containing the type of combination "subject.activity"
+#   (with "subject" between 1 and 30, and activity between 1 and 6)
 # - a third column containng the corresponding average value
 # The function melt() does exactly this.
 u <- melt (t, id.vars = "feature", variable.name = "subject.activity", value.name = "average")
@@ -251,6 +252,14 @@ u <- melt (t, id.vars = "feature", variable.name = "subject.activity", value.nam
 # Finally, we want to obtain a data frame where the second column is replaced by a pair
 # of columns containing respectively "subject" and "activity"
 step5 <- separate(data = u, col = subject.activity, into = c("subject","activity"))
+
+# STEP 5G)
+# The "activity" column in step5 contains identifiers between 1 and 6.
+# We replace them with more readable ones with a procedure similar to step 3B
+
+step5$activity <- mapvalues(as.character(step5$activity),
+                            from=activity_labels$V1,
+                            to=activity_labels$V2)
 
 # STEP 6)
 # We save the data of step5 into a txt file
